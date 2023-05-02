@@ -10,7 +10,6 @@ import java.sql.SQLException;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
-     //   Util.getconnection(); //проверка подключения к базе данны
         User user = new User();
         UserServiceImpl userService = new UserServiceImpl();
         userService.createUsersTable();
@@ -26,8 +25,5 @@ public class Main {
         System.out.println(userService.getAllUsers());
         userService.cleanUsersTable();
         userService.dropUsersTable();
-        //    userDaoJDBC.removeUserById(3);
-        Util.slose();
-
     }
 }
