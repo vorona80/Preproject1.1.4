@@ -50,7 +50,9 @@ public class UserDaoJDBCImpl implements UserDao {
             preparedStatement.execute();
             connection.commit();
         } catch (SQLException e) {
-            connection.rollback();    //не получается использовать роллбэк в трай с ресурсами. Ролбэк нужен только в двух методах как я понял
+            if (connection != null) {
+                connection.rollback();    //не получается использовать роллбэк в трай с ресурсами. Ролбэк нужен только в двух методах как я понял
+            }
             System.out.println("SQL Exeption: " + e.getMessage());
         } finally {
             connection.close();
@@ -67,7 +69,9 @@ public class UserDaoJDBCImpl implements UserDao {
             preparedStatement.executeUpdate();
             connection.commit();
         } catch (SQLException e) {
-            connection.rollback();  //  не получается использовать роллбэк в трай с ресурсами
+            if(connection != null) {
+                connection.rollback();  //  не получается использовать роллбэк в трай с ресурсами
+            }
             System.out.println("SQL Exeption: " + e.getMessage());
         } finally {
             connection.close();
