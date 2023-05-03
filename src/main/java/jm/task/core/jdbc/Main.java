@@ -11,7 +11,8 @@ import java.sql.SQLException;
 public class Main {
     public static void main(String[] args) throws SQLException {
         User user = new User();
-        UserServiceImpl userService = new UserServiceImpl();
+        UserService userService = new UserServiceImpl();
+  //      UserServiceImpl userService = new UserServiceImpl();
         userService.createUsersTable();
         userService.saveUser("Name1", "LastName1", (byte) 20);
         user = userService.getAllUsers().get(0);
